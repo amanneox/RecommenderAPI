@@ -75,3 +75,7 @@ curl -XDELETE -H "Content-type: application/json" 'https://2c8cx5whk0.execute-ap
 ```json
 "Ok"
 ```
+
+## POST HANDLER
+
+*SCHEMA*

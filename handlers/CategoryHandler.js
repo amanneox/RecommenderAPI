@@ -19,7 +19,7 @@ function dbConnectAndExecute(dbUrl, fn) {
   return dbExecute(mongoose.connect(dbUrl, { useMongoClient: true }), fn)
 }
 
-module.exports.getCategorys = (event, context, callback) => {
+module.exports.getCategory = (event, context, callback) => {
   dbConnectAndExecute(mongoString, () => (
     CategoryModel
       .find()
@@ -28,7 +28,7 @@ module.exports.getCategorys = (event, context, callback) => {
   ))
 }
 
-module.exports.createCategorys = (event, context, callback) => {
+module.exports.createCategory = (event, context, callback) => {
     const data = JSON.parse(event.body)
     const id = event.pathParameters.id
     const category = new  CategoryModel({
