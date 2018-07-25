@@ -1,0 +1,14 @@
+{
+  "name": "recommenderapi",
+  "version": "1.0.0",
+  "description": "Serverless REST API with MongoDB using Mongoose and Bluebird",
+  "main": "handler.js",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "dotenv": "^6.0.0",
+    "mongoose": "^4.9.6",
+    "validator": "^7.0.0"
+  },
+  "author": "Aman Adhikari <amanadhikari@gmail.com>",
+  "license": "MIT"
+}
