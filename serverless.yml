@@ -47,3 +47,11 @@ functions:
           path: post/{id}
           method: post
           cors: true
+          
+  getPosts:
+    handler: handlers/PostHandler.getPosts
+    events:
+      - http:
+          path: posts/list
+          method: get
+          cors: true
