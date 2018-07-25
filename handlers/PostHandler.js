@@ -102,11 +102,6 @@ module.exports.createPost = (event, context, callback) => {
       category: id,
     })
 
-    if (post.validateSync()) {
-      callback(null, createErrorResponse(400, 'Incorrect parameter'))
-      return
-    }
-
     dbConnectAndExecute(mongoString, () => (
       PostModel.findByIdAndUpdate(id, user)
         .then(() => callback(null, { statusCode: 200, body: JSON.stringify('Ok') }))

@@ -37,10 +37,6 @@ module.exports.createCategorys = (event, context, callback) => {
       type: data.type,
     })
 
-    if (category.validateSync()) {
-      callback(null, createErrorResponse(400, 'Incorrect category data'))
-      return
-    }
     dbConnectAndExecute(mongoString, () => (
       category
         .save()
@@ -70,10 +66,6 @@ module.exports.createCategorys = (event, context, callback) => {
     const data = JSON.parse(event.body)
     const id = event.pathParameters.id
 
-    if (!validator.isAlphanumeric(id)) {
-      callback(null, createErrorResponse(400, 'Incorrect id'))
-      return
-    }
 
     const category = new CategoryModel({
       _id: id,
@@ -82,10 +74,6 @@ module.exports.createCategorys = (event, context, callback) => {
       type: data.type,
     })
 
-    if (category.validateSync()) {
-      callback(null, createErrorResponse(400, 'Incorrect parameter'))
-      return
-    }
 
     dbConnectAndExecute(mongoString, () => (
       UserModel.findByIdAndUpdate(id, user)
