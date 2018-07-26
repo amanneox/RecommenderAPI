@@ -18,6 +18,19 @@ const dbExecute = (db, fn) => db.then(fn).finally(() => db.close());
 function dbConnectAndExecute(dbUrl, fn) {
   return dbExecute(mongoose.connect(dbUrl, { useMongoClient: true }), fn)
 }
+module.exports.getPost = (event, context, callback) => {
+  if (!validator.isAlphanumeric(event.pathParameters.id)) {
+    callback(null, createErrorResponse(400, 'Incorrect id'));
+    return;
+  }
+
+  dbConnectAndExecute(mongoString, () => (
+    PostModel
+      .find({ _id: event.pathParameters.id })
+      .then(user => callback(null, { statusCode: 200, body: JSON.stringify(user) }))
+      .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
+  ));
+};
 
 module.exports.getPosts = (event, context, callback) => {
   dbConnectAndExecute(mongoString, () => (

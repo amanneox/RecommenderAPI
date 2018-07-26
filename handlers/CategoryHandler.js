@@ -30,7 +30,6 @@ module.exports.getCategory = (event, context, callback) => {
 
 module.exports.createCategory = (event, context, callback) => {
     const data = JSON.parse(event.body)
-    const id = event.pathParameters.id
     const category = new  CategoryModel({
       name: data.name,
       subType: data.subType,

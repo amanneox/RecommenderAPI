@@ -18,6 +18,14 @@ const model = mongoose.model('User', {
     type: String,
     unique: true,
   }
+  number:{
+    type:Number,
+    unique: true,
+  }
+  joinDate:{
+    type:Date,
+  }
+  
 });
 
 module.exports = model;

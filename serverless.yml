@@ -48,6 +48,14 @@ functions:
           method: post
           cors: true
 
+  getPost:
+   handler: handlers/PostHandler.getPost
+   events:
+     - http:
+         path: post/{id}
+         method: get
+         cors: true
+
   getPosts:
     handler: handlers/PostHandler.getPosts
     events:
@@ -69,5 +77,20 @@ functions:
     events:
       - http:
           path: post/delete/{id}
+          method: get
+          cors: true
+
+  createCategory:
+    handler: handlers/CategoryHandler.createCategory
+    events:
+      - http:
+          path: category
+          method: post
+          cors: true
+  getCategory:
+    handler: handlers/CategoryHandler.getCategory
+    events:
+      - http:
+          path: category/list
           method: get
           cors: true
