@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const Schema = mongoose.Schema
-const model = mongoose.model('Review', {
+const model = mongoose.model('Rating', {
       id:{
         type:Schema.ObjectId,
       },
@@ -11,7 +11,7 @@ const model = mongoose.model('Review', {
       postID:{
         type:Schema.ObjectId
       },
-  
+
 });
 
 module.exports = model;

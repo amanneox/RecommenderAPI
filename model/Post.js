@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
+const Comment = require('./Comment.js')
 const model = mongoose.model('Post', {
   name: {
     type: String,
@@ -32,7 +33,7 @@ const model = mongoose.model('Post', {
       type:Number
     },
     comment:{
-      type:String
+      type:[String]
     },
   },
   value:{
