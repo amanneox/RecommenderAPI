@@ -93,4 +93,11 @@ functions:
       - http:
           path: category/list
           method: get
+
+  createComment:
+    handler: handlers/CommentHandler.createComment
+    events:
+      - http:
+          path: comment/{id}
+          method: post
           cors: true

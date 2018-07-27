@@ -27,7 +27,9 @@ const model = mongoose.model('Post', {
       type:String
     }
   },
-
+ images:{
+   type:[String]
+ },
   reviews:{
     rating:{
       type:Number
