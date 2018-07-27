@@ -40,6 +40,9 @@ module.exports.createUser = (event, context, callback) => {
   const user = new UserModel({
     name: data.name,
     city: data.city,
+    email: data.email,
+    number: data.number,
+    username: data.username,
 
   });
 
@@ -81,10 +84,10 @@ module.exports.updateUser = (event, context, callback) => {
   const user = new UserModel({
     _id: id,
     name: data.name,
-    firstname: data.firstname,
-    birth: data.birth,
     city: data.city,
-    ip: event.requestContext.identity.sourceIp,
+    email: data.email,
+    number: data.number,
+    username: data.username,
   });
 
   if (user.validateSync()) {
