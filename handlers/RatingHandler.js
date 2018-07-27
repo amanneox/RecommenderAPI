@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Promise = require('bluebird')
 const validator = require('validator')
-const CommentModel = require('../model/Comment.js')
+const RatingModel = require('../model/Rating.js')
 require('dotenv').config()
 mongoose.Promise = Promise;
 
@@ -18,32 +18,33 @@ const dbExecute = (db, fn) => db.then(fn).finally(() => db.close());
 function dbConnectAndExecute(dbUrl, fn) {
   return dbExecute(mongoose.connect(dbUrl, { useMongoClient: true }), fn)
 }
-// List All Comment With POST ID from params
-module.exports.getComments = (event, context, callback) => {
+// List All Rating With POST ID from params
+module.exports.getRatings = (event, context, callback) => {
   dbConnectAndExecute(mongoString, () => (
-    CommentModel
+    RatingModel
       .find({ postID: event.pathParameters.id })
-      .then(comment => callback(null, { statusCode: 200, body: JSON.stringify(comment) }))
+      .then(rating => callback(null, { statusCode: 200, body: JSON.stringify(rating) }))
       .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
   ))
 }
 
-module.exports.createComment = (event, context, callback) => {
+module.exports.createRating = (event, context, callback) => {
     const data = JSON.parse(event.body)
     const id = event.pathParameters.id
 
-    const comment = new  CommentModel({
+    const rating = new  RatingModel({
       userID: data.userID,
       postID: id,
-      comments: data.comments,
+      value: data.value,
+      like: data.like,
     })
 
     dbConnectAndExecute(mongoString, () => (
-      comment
+      rating
         .save()
         .then(() => callback(null, {
           statusCode: 200,
-          body: JSON.stringify({ id: comment.id }),
+          body: JSON.stringify({ id: rating.id }),
         }))
         .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
     ))

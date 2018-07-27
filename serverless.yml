@@ -101,3 +101,25 @@ functions:
           path: comment/{id}
           method: post
           cors: true
+
+  getComments:
+    handler: handlers/CommentHandler.getComments
+    events:
+      - http:
+          path: comment/list/{id}
+          method: get
+
+  createRating:
+    handler: handlers/RatingHandler.createRating
+    events:
+      - http:
+          path: rating/{id}
+          method: post
+          cors: true
+
+  getRatings:
+    handler: handlers/RatingHandler.getRatings
+    events:
+      - http:
+          path: rating/list/{id}
+          method: get

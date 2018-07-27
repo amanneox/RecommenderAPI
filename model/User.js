@@ -24,8 +24,9 @@ const model = mongoose.model('User', {
   }
   joinDate:{
     type:Date,
+    default: Date.now
   }
-  
+
 });
 
 module.exports = model;
