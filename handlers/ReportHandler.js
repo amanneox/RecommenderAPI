@@ -35,8 +35,7 @@ module.exports.createReport = (event, context, callback) => {
     const Report = new  ReportModel({
       userID: data.userID,
       postID: id,
-      value: data.value,
-      like: data.like,
+      message: data.message,
     })
 
     dbConnectAndExecute(mongoString, () => (

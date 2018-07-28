@@ -123,3 +123,11 @@ functions:
       - http:
           path: rating/list/{id}
           method: get
+
+  createReport:
+    handler: handlers/ReportHandler.createReport
+    events:
+      - http:
+          path: report/{id}
+          method: post
+          cors: true
